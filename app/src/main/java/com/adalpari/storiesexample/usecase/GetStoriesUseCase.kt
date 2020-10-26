@@ -5,7 +5,7 @@ import com.adalpari.storiesexample.model.Story
 
 class GetStoriesUseCase: UseCase<GetStoriesUseCase.Input, GetStoriesUseCase.Output> {
 
-    override fun execute(request: Request<Input>, callback: UseCase.Callback<Output>) {
+    override fun execute(input: Input, callback: UseCase.Callback<Output>) {
         // This is a mock use case. We just return a static response
         val storiesSet1 = createStoriesSet(listOf(
             "https://raw.githubusercontent.com/adalpari/stories-example/main/assets-images/bady-abbas-VmYZe_yqxL0-unsplash.jpg",
@@ -33,12 +33,12 @@ class GetStoriesUseCase: UseCase<GetStoriesUseCase.Input, GetStoriesUseCase.Outp
             "https://raw.githubusercontent.com/adalpari/stories-example/main/assets-images/oliver-sjostrom-iSrBg45UCaM-unsplash.jpg"
         ))
 
-        callback.onResponse(Response(Output(listOf(storiesSet1, storiesSet2, storiesSet3, storiesSet4, storiesSet5))))
+        callback.onResponse(Output(listOf(storiesSet1, storiesSet2, storiesSet3, storiesSet4, storiesSet5)))
     }
 
     private fun createStoriesSet(contentUrls: List<String>): StoriesSet =
         StoriesSet(contentUrls.map { Story(System.currentTimeMillis(), it, false) })
 
-    class Input()
-    class Output(entries: List<StoriesSet>)
+    class Input
+    class Output(val entries: List<StoriesSet>)
 }
