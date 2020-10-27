@@ -7,20 +7,25 @@
     android:padding="4dp"
     >
 
-    <ImageView
-        android:id="@+id/thumbnail_image"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
+    <com.github.florent37.shapeofview.shapes.CircleView
+        android:layout_width="64dp"
+        android:layout_height="64dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        />
+        >
+        <ImageView
+            android:id="@+id/thumbnail_image"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            />
+    </com.github.florent37.shapeofview.shapes.CircleView>
 
     <ImageView
         android:id="@+id/thumbnail_stroke"
-        android:layout_width="56dp"
-        android:layout_height="56dp"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
         android:background="@drawable/oval_stroke"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

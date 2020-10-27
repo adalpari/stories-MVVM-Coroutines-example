@@ -18,11 +18,12 @@ class ThumbnailsAdapter constructor(private val entries: List<StoriesSet>): Recy
         val storiesSet = entries[position]
         Picasso.get()
             .load(storiesSet.stories[0].contentUrl)
+            .resize(64, 64)
             .centerCrop()
             .into(holder.imageView)
         holder.thumbnailStroke.visibility = when (storiesSet.isViewed()) {
-            true -> View.VISIBLE
-            false -> View.INVISIBLE
+            true -> View.INVISIBLE
+            false -> View.VISIBLE
         }
     }
 
