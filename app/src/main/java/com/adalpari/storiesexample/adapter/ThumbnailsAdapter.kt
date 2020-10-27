@@ -20,7 +20,7 @@ class ThumbnailsAdapter constructor(private val entries: List<StoriesSet>): Recy
             .load(storiesSet.stories[0].contentUrl)
             .centerCrop()
             .into(holder.imageView)
-        holder.thumbnailStroke.visibility = when (storiesSet.isViewed) {
+        holder.thumbnailStroke.visibility = when (storiesSet.isViewed()) {
             true -> View.VISIBLE
             false -> View.INVISIBLE
         }
