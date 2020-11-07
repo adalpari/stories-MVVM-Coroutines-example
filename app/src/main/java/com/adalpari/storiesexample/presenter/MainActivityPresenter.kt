@@ -1,6 +1,6 @@
 package com.adalpari.storiesexample.presenter
 
-import com.adalpari.storiesexample.model.StoriesSet
+import com.adalpari.storiesview.model.StoriesSet
 import com.adalpari.storiesexample.usecase.GetStoriesUseCase
 import com.adalpari.storiesexample.usecase.UseCase
 
@@ -27,6 +27,6 @@ class MainActivityPresenter constructor(private val getStoriesUseCase: GetStorie
     }
 
     interface View {
-        fun showStories(entries: List<StoriesSet>)
+        fun showStories(entries: List<com.adalpari.storiesview.model.StoriesSet>)
     }
 }

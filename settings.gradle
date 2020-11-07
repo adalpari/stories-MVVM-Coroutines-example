@@ -1,2 +1,3 @@
+include ':storiesview'
 include ':app'
 rootProject.name = "Stories example"

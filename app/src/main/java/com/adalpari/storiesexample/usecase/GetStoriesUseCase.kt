@@ -1,7 +1,7 @@
 package com.adalpari.storiesexample.usecase
 
-import com.adalpari.storiesexample.model.StoriesSet
-import com.adalpari.storiesexample.model.Story
+import com.adalpari.storiesview.model.StoriesSet
+import com.adalpari.storiesview.model.Story
 
 class GetStoriesUseCase: UseCase<GetStoriesUseCase.Input, GetStoriesUseCase.Output> {
 
@@ -36,9 +36,15 @@ class GetStoriesUseCase: UseCase<GetStoriesUseCase.Input, GetStoriesUseCase.Outp
         callback.onResponse(Output(listOf(storiesSet1, storiesSet2, storiesSet3, storiesSet4, storiesSet5)))
     }
 
-    private fun createStoriesSet(contentUrls: List<String>): StoriesSet =
-        StoriesSet(contentUrls.map { Story(System.currentTimeMillis(), it, false) })
+    private fun createStoriesSet(contentUrls: List<String>): com.adalpari.storiesview.model.StoriesSet =
+        com.adalpari.storiesview.model.StoriesSet(contentUrls.map {
+            com.adalpari.storiesview.model.Story(
+                System.currentTimeMillis(),
+                it,
+                false
+            )
+        })
 
     class Input
-    class Output(val entries: List<StoriesSet>)
+    class Output(val entries: List<com.adalpari.storiesview.model.StoriesSet>)
 }

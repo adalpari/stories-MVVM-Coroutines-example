@@ -3,7 +3,7 @@ package com.adalpari.storiesexample.view
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.adalpari.storiesexample.R
-import com.adalpari.storiesexample.model.StoriesSet
+import com.adalpari.storiesview.model.StoriesSet
 import com.adalpari.storiesexample.presenter.MainActivityPresenter
 import com.adalpari.storiesexample.usecase.GetStoriesUseCase
 
@@ -12,7 +12,7 @@ class MainActivity : AppCompatActivity(), MainActivityPresenter.View {
     private val getStoriesUseCase: GetStoriesUseCase = GetStoriesUseCase()
     private val mainActivityPresenter: MainActivityPresenter = MainActivityPresenter(getStoriesUseCase)
 
-    private lateinit var storiesView: StoriesView
+    private lateinit var storiesView: com.adalpari.storiesview.view.StoriesView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,7 +34,7 @@ class MainActivity : AppCompatActivity(), MainActivityPresenter.View {
         super.onPause()
     }
 
-    override fun showStories(entries: List<StoriesSet>) {
+    override fun showStories(entries: List<com.adalpari.storiesview.model.StoriesSet>) {
         storiesView.showStories(entries)
     }
 }

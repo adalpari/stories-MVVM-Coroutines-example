@@ -1,12 +1,12 @@
-package com.adalpari.storiesexample.adapter
+package com.adalpari.storiesview.adapter
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.recyclerview.widget.RecyclerView
-import com.adalpari.storiesexample.R
-import com.adalpari.storiesexample.model.StoriesSet
+import com.adalpari.storiesview.R
+import com.adalpari.storiesview.model.StoriesSet
 import com.squareup.picasso.Picasso
 
 class ThumbnailsAdapter constructor(private val entries: List<StoriesSet>): RecyclerView.Adapter<ThumbnailsAdapter.ThumbnailViewHolder>() {

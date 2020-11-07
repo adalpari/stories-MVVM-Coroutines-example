@@ -1,13 +1,13 @@
-package com.adalpari.storiesexample.view
+package com.adalpari.storiesview.view
 
 import android.content.Context
 import android.util.AttributeSet
 import android.widget.LinearLayout
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.adalpari.storiesexample.R
-import com.adalpari.storiesexample.adapter.ThumbnailsAdapter
-import com.adalpari.storiesexample.model.StoriesSet
+import com.adalpari.storiesview.R
+import com.adalpari.storiesview.adapter.ThumbnailsAdapter
+import com.adalpari.storiesview.model.StoriesSet
 
 class StoriesView(context: Context, attrs: AttributeSet) : LinearLayout(context, attrs) {
 
