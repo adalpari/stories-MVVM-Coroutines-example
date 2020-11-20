@@ -1,24 +1,26 @@
 package com.adalpari.storiesexample.view
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.adalpari.storiesexample.R
+import com.adalpari.storiesexample.databinding.ActivityMainBinding
 import com.adalpari.storiesview.model.StoriesSet
 import com.adalpari.storiesexample.presenter.MainActivityPresenter
 import com.adalpari.storiesexample.usecase.GetStoriesUseCase
 
-class MainActivity : AppCompatActivity(), MainActivityPresenter.View {
+class MainActivity : BaseActivity(), MainActivityPresenter.View {
 
     private val getStoriesUseCase: GetStoriesUseCase = GetStoriesUseCase()
     private val mainActivityPresenter: MainActivityPresenter = MainActivityPresenter(getStoriesUseCase)
 
-    private lateinit var storiesView: com.adalpari.storiesview.view.StoriesView
+    private val binding by binding<ActivityMainBinding>(R.layout.activity_main)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        storiesView = findViewById(R.id.stories_view)
+        binding.apply {
+            lifecycleOwner = this@MainActivity
+        }
 
         mainActivityPresenter.onAttach(this)
         mainActivityPresenter.init()
@@ -34,7 +36,7 @@ class MainActivity : AppCompatActivity(), MainActivityPresenter.View {
         super.onPause()
     }
 
-    override fun showStories(entries: List<com.adalpari.storiesview.model.StoriesSet>) {
-        storiesView.showStories(entries)
+    override fun showStories(entries: List<StoriesSet>) {
+        binding.storiesView.showStories(entries, this)
     }
 }
