@@ -1,11 +1,10 @@
-package com.adalpari.storiesexample.usecase
+package com.adalpari.storiesexample.viewmodel
 
-import com.adalpari.storiesview.model.StoriesSet
-import com.adalpari.storiesview.model.Story
+class GetStoriesViewModel() : BaseViewModel<UiState>() {
 
-class GetStoriesUseCase: UseCase<GetStoriesUseCase.Input, GetStoriesUseCase.Output> {
+    fun getStories() {
+        uiState.value = UiState.Loading
 
-    override fun execute(input: Input, callback: UseCase.Callback<Output>) {
         // This is a mock use case. We just return a static response
         val storiesSet1 = createStoriesSet(listOf(
             "https://raw.githubusercontent.com/adalpari/stories-example/main/assets-images/bady-abbas-VmYZe_yqxL0-unsplash.jpg",
@@ -33,7 +32,15 @@ class GetStoriesUseCase: UseCase<GetStoriesUseCase.Input, GetStoriesUseCase.Outp
             "https://raw.githubusercontent.com/adalpari/stories-example/main/assets-images/oliver-sjostrom-iSrBg45UCaM-unsplash.jpg"
         ))
 
-        callback.onResponse(Output(listOf(storiesSet1, storiesSet2, storiesSet3, storiesSet4, storiesSet5)))
+        uiState.value = UiState.Success(
+            listOf(
+                storiesSet1,
+                storiesSet2,
+                storiesSet3,
+                storiesSet4,
+                storiesSet5
+            )
+        )
     }
 
     private fun createStoriesSet(contentUrls: List<String>): com.adalpari.storiesview.model.StoriesSet =
@@ -45,6 +52,4 @@ class GetStoriesUseCase: UseCase<GetStoriesUseCase.Input, GetStoriesUseCase.Outp
             )
         })
 
-    class Input
-    class Output(val entries: List<com.adalpari.storiesview.model.StoriesSet>)
 }

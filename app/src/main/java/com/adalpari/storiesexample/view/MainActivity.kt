@@ -1,18 +1,19 @@
 package com.adalpari.storiesexample.view
 
 import android.os.Bundle
+import androidx.activity.viewModels
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import com.adalpari.storiesexample.R
 import com.adalpari.storiesexample.databinding.ActivityMainBinding
-import com.adalpari.storiesview.model.StoriesSet
-import com.adalpari.storiesexample.presenter.MainActivityPresenter
-import com.adalpari.storiesexample.usecase.GetStoriesUseCase
+import com.adalpari.storiesexample.viewmodel.GetStoriesViewModel
+import com.adalpari.storiesexample.viewmodel.UiState
 
-class MainActivity : BaseActivity(), MainActivityPresenter.View {
-
-    private val getStoriesUseCase: GetStoriesUseCase = GetStoriesUseCase()
-    private val mainActivityPresenter: MainActivityPresenter = MainActivityPresenter(getStoriesUseCase)
+class MainActivity : BaseActivity() {
 
     private val binding by binding<ActivityMainBinding>(R.layout.activity_main)
+    private val viewModel: GetStoriesViewModel by lazy { ViewModelProvider(this).get(GetStoriesViewModel::class.java) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -22,21 +23,15 @@ class MainActivity : BaseActivity(), MainActivityPresenter.View {
             lifecycleOwner = this@MainActivity
         }
 
-        mainActivityPresenter.onAttach(this)
-        mainActivityPresenter.init()
+        viewModel.uiState().observe(this, { uiState -> showStories(uiState) })
+        viewModel.getStories()
     }
 
-    override fun onResume() {
-        super.onResume()
-        mainActivityPresenter.onAttach(this)
-    }
-
-    override fun onPause() {
-        mainActivityPresenter.onDetach()
-        super.onPause()
-    }
-
-    override fun showStories(entries: List<StoriesSet>) {
-        binding.storiesView.showStories(entries, this)
+    private fun showStories(uiState: UiState) {
+        when (uiState) {
+            is UiState.Success -> binding.storiesView.showStories(uiState.entries, this)
+            is UiState.Loading ->  {} //TODO show loading
+            is UiState.Error -> {} //TODO show error
+        }
     }
 }
