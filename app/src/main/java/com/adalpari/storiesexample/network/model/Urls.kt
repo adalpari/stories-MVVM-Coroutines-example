@@ -1,4 +1,4 @@
-package com.adalpari.storiesexample.model
+package com.adalpari.storiesexample.network.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

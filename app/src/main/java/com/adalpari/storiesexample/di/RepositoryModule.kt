@@ -1,6 +1,6 @@
 package com.adalpari.storiesexample.di
 
-import com.adalpari.storiesexample.datasource.DataSource
+import com.adalpari.storiesexample.network.datasource.DataSource
 import com.adalpari.storiesexample.repository.Repository
 import com.adalpari.storiesexample.repository.StoriesRepository
 import dagger.Module

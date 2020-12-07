@@ -1,6 +1,8 @@
 package com.adalpari.storiesexample.view
 
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
 import androidx.activity.viewModels
 import com.adalpari.storiesexample.R
 import com.adalpari.storiesexample.databinding.ActivityMainBinding
@@ -26,9 +28,17 @@ class MainActivity : BaseActivity() {
 
     private fun showStories(uiState: UiState) {
         when (uiState) {
-            is UiState.Success -> binding.storiesView.showStories(uiState.entries, this)
-            is UiState.Loading ->  {} //TODO show loading
-            is UiState.Error -> {} //TODO show error
+            is UiState.Success -> {
+                binding.progressBar.visibility = View.GONE
+                binding.storiesView.showStories(uiState.entries, this)
+            }
+
+            is UiState.Loading ->  binding.progressBar.visibility = View.VISIBLE
+
+            is UiState.Error -> {
+                binding.progressBar.visibility = View.GONE
+                Toast.makeText(this, uiState.message, Toast.LENGTH_LONG).show()
+            }
         }
     }
 }

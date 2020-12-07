@@ -3,7 +3,6 @@ package com.adalpari.storiesexample.viewmodel
 import androidx.hilt.lifecycle.ViewModelInject
 import androidx.lifecycle.viewModelScope
 import com.adalpari.storiesexample.repository.StoriesRepository
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.async
 import kotlinx.coroutines.awaitAll
 import kotlinx.coroutines.launch
@@ -11,12 +10,12 @@ import kotlinx.coroutines.launch
 class GetStoriesViewModel @ViewModelInject constructor(private val storiesRepository: StoriesRepository) : BaseViewModel<UiState>() {
 
     fun getStories() {
-        uiState.value = UiState.Loading
-
-        viewModelScope.launch(context = Dispatchers.IO) {
+        viewModelScope.launch {
             try {
+                uiState.value = UiState.Loading
+
                 val stories = (0..getRandomStoriesNumber()).map {
-                    async { storiesRepository.getRandomImages(getRandomStoriesNumber()) }
+                    async { storiesRepository.getStories(getRandomStoriesNumber()) }
                 }.awaitAll()
 
                 uiState.value = UiState.Success(stories)
