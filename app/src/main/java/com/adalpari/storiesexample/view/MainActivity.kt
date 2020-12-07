@@ -2,9 +2,6 @@ package com.adalpari.storiesexample.view
 
 import android.os.Bundle
 import androidx.activity.viewModels
-import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import com.adalpari.storiesexample.R
 import com.adalpari.storiesexample.databinding.ActivityMainBinding
 import com.adalpari.storiesexample.viewmodel.GetStoriesViewModel
@@ -13,7 +10,7 @@ import com.adalpari.storiesexample.viewmodel.UiState
 class MainActivity : BaseActivity() {
 
     private val binding by binding<ActivityMainBinding>(R.layout.activity_main)
-    private val viewModel: GetStoriesViewModel by lazy { ViewModelProvider(this).get(GetStoriesViewModel::class.java) }
+    private val viewModel: GetStoriesViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

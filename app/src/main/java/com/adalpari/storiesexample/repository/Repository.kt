@@ -1,7 +1,7 @@
 package com.adalpari.storiesexample.repository
 
-import com.adalpari.storiesexample.model.UnsplashPhoto
+import com.adalpari.storiesview.model.StoriesSet
 
 interface Repository {
-    suspend fun getRandomImages(count: Int): List<UnsplashPhoto>
+    suspend fun getRandomImages(count: Int): StoriesSet
 }

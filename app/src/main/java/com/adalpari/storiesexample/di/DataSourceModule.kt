@@ -1,5 +1,6 @@
 package com.adalpari.storiesexample.di
 
+import com.adalpari.storiesexample.datasource.DataSource
 import com.adalpari.storiesexample.datasource.UnsplashDataSource
 import com.adalpari.storiesexample.datasource.UnsplashService
 import dagger.Module
@@ -11,7 +12,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import javax.inject.Singleton
 
-private const val BASE_URL = "http://hp-api.herokuapp.com/"
+private const val BASE_URL = "https://api.unsplash.com/"
 
 @Module
 @InstallIn(ApplicationComponent::class)
@@ -39,6 +40,6 @@ class DataSourceModule {
 
     @Provides
     @Singleton
-    fun provideDataSource(unsplashService: UnsplashService): UnsplashDataSource = UnsplashDataSource(unsplashService)
+    fun provideDataSource(unsplashService: UnsplashService): DataSource = UnsplashDataSource(unsplashService)
 
 }
