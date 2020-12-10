@@ -16,7 +16,7 @@ class GetStoriesViewModel @ViewModelInject constructor(private val getStoriesUse
 
                 val stories = (0..getRandomStoriesNumber()).map {
                     async {
-                        getStoriesUseCase.call(getRandomStoriesNumber())
+                        call(getStoriesUseCase, getRandomStoriesNumber())
                     }
                 }.awaitAll()
 
