@@ -9,10 +9,5 @@ import javax.inject.Inject
 
 class GetStoriesUseCase @Inject constructor(private val storiesRepository: StoriesRepository): IOUseCase<Int, StoriesSet> {
 
-    override suspend fun call(input: Int): StoriesSet =
-        withContext(context = Dispatchers.IO) {
-            retryOnError {
-                storiesRepository.getStories(input)
-            }
-        }
+    override suspend fun call(input: Int): StoriesSet = storiesRepository.getStories(input)
 }

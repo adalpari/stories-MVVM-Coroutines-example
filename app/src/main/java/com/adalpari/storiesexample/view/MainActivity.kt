@@ -7,7 +7,7 @@ import androidx.activity.viewModels
 import com.adalpari.storiesexample.R
 import com.adalpari.storiesexample.databinding.ActivityMainBinding
 import com.adalpari.storiesexample.viewmodel.GetStoriesViewModel
-import com.adalpari.storiesexample.viewmodel.UiState
+import com.adalpari.storiesexample.viewmodel.StoriesState
 
 class MainActivity : BaseActivity() {
 
@@ -26,18 +26,18 @@ class MainActivity : BaseActivity() {
         viewModel.getStories()
     }
 
-    private fun showStories(uiState: UiState) {
-        when (uiState) {
-            is UiState.Success -> {
+    private fun showStories(storiesState: StoriesState) {
+        when (storiesState) {
+            is StoriesState.Success -> {
                 binding.progressBar.visibility = View.GONE
-                binding.storiesView.showStories(uiState.entries, this)
+                binding.storiesView.showStories(storiesState.entries, this)
             }
 
-            is UiState.Loading ->  binding.progressBar.visibility = View.VISIBLE
+            is StoriesState.Loading ->  binding.progressBar.visibility = View.VISIBLE
 
-            is UiState.Error -> {
+            is StoriesState.Error -> {
                 binding.progressBar.visibility = View.GONE
-                Toast.makeText(this, uiState.message, Toast.LENGTH_LONG).show()
+                Toast.makeText(this, storiesState.message, Toast.LENGTH_LONG).show()
             }
         }
     }
