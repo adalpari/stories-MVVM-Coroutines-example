@@ -1,2 +1,2 @@
-# Stories example
-This project is an example of how to create stories Instagram like or status Whatsapp like
+# Stories MVVM example
+This simple project is an example of how to use MVVM with Kotlin Coroutines + ViewBinding + different layers: UseCase, Repository, DataSource..
