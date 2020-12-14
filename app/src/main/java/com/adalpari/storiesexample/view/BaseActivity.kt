@@ -1,15 +1,24 @@
 package com.adalpari.storiesexample.view
 
-import androidx.annotation.LayoutRes
+import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
-import dagger.hilt.android.AndroidEntryPoint
+import androidx.lifecycle.ViewModel
+import androidx.viewbinding.ViewBinding
 
-@AndroidEntryPoint
-open class BaseActivity : AppCompatActivity() {
+abstract class BaseActivity<B: ViewBinding,VM: ViewModel> : AppCompatActivity() {
 
-    protected inline fun <reified T : ViewDataBinding> binding(@LayoutRes resId: Int): Lazy<T> =
-        lazy { DataBindingUtil.setContentView<T>(this, resId) }
+    lateinit var binding: B
+    abstract val viewModel: VM
 
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        binding = getViewBinding()
+        setContentView(binding.root)
+
+        onObserve()
+    }
+
+    abstract fun onObserve()
+
+    abstract fun getViewBinding(): B
 }
