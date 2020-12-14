@@ -1,6 +1,6 @@
 package com.adalpari.storiesexample.usecase
 
-interface IOUseCase<I, O> {
+interface SuspendUseCase<I, O> {
 
     suspend fun call(input: I): O
 
