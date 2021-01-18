@@ -4,4 +4,14 @@
         <item name="android:windowContentTransitions">true</item>
     </style>
 
+    <style name="Widget.RoundedStory" parent="Widget.MaterialComponents.ShapeableImageView">
+        <item name="shapeAppearance">@style/ShapeAppearance.RoundedStory</item>
+    </style>
+
+    <style name="ShapeAppearance.RoundedStory"
+        parent="ShapeAppearance.MaterialComponents.MediumComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">50%</item>
+    </style>
+
 </resources>

@@ -11,5 +11,4 @@ class GetStoriesUseCase @Inject constructor(private val storiesRepository: Stori
         withContext(Dispatchers.IO) {
             storiesRepository.getStories(input)
         }
-
 }

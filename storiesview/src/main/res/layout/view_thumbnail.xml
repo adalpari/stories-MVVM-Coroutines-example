@@ -6,20 +6,18 @@
     android:layout_height="wrap_content"
     android:padding="4dp">
 
-    <com.github.florent37.shapeofview.shapes.CircleView
+    <com.google.android.material.imageview.ShapeableImageView
+        android:id="@+id/story_thumbnail"
+        style="@style/Widget.RoundedStory"
         android:layout_width="64dp"
         android:layout_height="64dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <ImageView
-            android:id="@+id/story_thumbnail"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:transitionName="story_image" />
-    </com.github.florent37.shapeofview.shapes.CircleView>
+        app:layout_constraintTop_toTopOf="parent"
+        android:transitionName="story_image"
+        >
+    </com.google.android.material.imageview.ShapeableImageView>
 
     <ImageView
         android:id="@+id/thumbnail_stroke"
