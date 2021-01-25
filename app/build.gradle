@@ -40,13 +40,13 @@ dependencies {
     implementation project(":storiesview")
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:${versions.kotlin}"
-    implementation 'androidx.core:core-ktx:1.3.2'
-    implementation "androidx.activity:activity-ktx:1.1.0"
-    implementation 'androidx.appcompat:appcompat:1.2.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.2'
-    implementation 'androidx.lifecycle:lifecycle-extensions:2.2.0'
-    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
-    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
+    implementation "androidx.core:core-ktx:${versions.corektx}"
+    implementation "androidx.activity:activity-ktx:${versions.activityktx}"
+    implementation "androidx.appcompat:appcompat:${versions.appcompat}"
+    implementation "androidx.constraintlayout:constraintlayout:${versions.constraintlayout}"
+    implementation "androidx.lifecycle:lifecycle-extensions:${versions.lifecycle}"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:${versions.lifecycle}"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:${versions.lifecycle}"
 
     // Network dependencies
     implementation "com.squareup.retrofit2:retrofit:${versions.retrofit}"
@@ -64,10 +64,11 @@ dependencies {
     kapt "com.google.dagger:hilt-android-compiler:${versions.daggerHiltAndroid}"
     kapt "androidx.hilt:hilt-compiler:${versions.daggerHilt}"
 
-    testImplementation 'junit:junit:4.12'
-
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    testImplementation "junit:junit:${versions.junit}"
+    testImplementation "org.mockito:mockito-core:${versions.mockito}"
+    testImplementation "com.nhaarman.mockitokotlin2:mockito-kotlin:${versions.mockitokotlin}"
+    testImplementation "androidx.arch.core:core-testing:${versions.coretesting}"
+    testImplementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:${versions.testcoroutines}"
 }
 
 kapt {
